@@ -19,3 +19,23 @@
 body {
   /* color: rgb(var(--foreground-rgb)); */
 }
+
+.side__cart {
+  transition: all 0.3s;
+  animation: slide 0.3s linear;
+}
+
+@keyframes slide {
+  0% {
+    right: -300px;
+  }
+  33% {
+    right: -200px;
+  }
+  66% {
+    right: -100px
+  }
+  100% {
+    right: 0px
+  }
+}

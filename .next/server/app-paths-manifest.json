@@ -1,12 +1,7 @@
 {
-  "/_not-found": "app/_not-found.js",
-  "/blog/page": "app/blog/page.js",
-  "/blog/[blogId]/page": "app/blog/[blogId]/page.js",
-  "/lien-he/page": "app/lien-he/page.js",
-  "/chon-size/page": "app/chon-size/page.js",
-  "/[productId]/page": "app/[productId]/page.js",
-  "/khuyen-mai/page": "app/khuyen-mai/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
   "/san-pham/page": "app/san-pham/page.js",
-  "/page": "app/page.js"
+  "/danh-sach-yeu-thich/page": "app/danh-sach-yeu-thich/page.js",
+  "/[productId]/page": "app/[productId]/page.js",
+  "/page": "app/page.js",
+  "/thanh-toan/page": "app/thanh-toan/page.js"
 }

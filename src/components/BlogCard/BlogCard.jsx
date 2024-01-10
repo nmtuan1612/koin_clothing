@@ -13,6 +13,7 @@ const BlogCard = () => {
           src={
             "https://koinclothing.vn/wp-content/uploads/2023/11/tao-dang-chuphinh_11zon.webp"
           }
+          alt="thumb"
           width={0}
           height={0}
           sizes="100vw"

@@ -5,13 +5,13 @@ const ProductPage = () => {
   return (
     <div className="w-full flex flex-col items-center">
       <div className="max-w-[1480px] w-full">
-        <div className="pt-[70px] pb-[30px]">
-          <div className="py-5 px-2.5">
+        <div className="pt-10 md:pt-[70px] md:pb-[30px]">
+          <div className="py-5 px-5 md:px-2.5">
             <div className="mb-5">
               <h2 className="uppercase text-3xl pb-4">TẤT CẢ SẢN PHẨM</h2>
             </div>
             <div className="mb-5 text-[#7A7A7A]">
-              <p>
+              <p className="text-justify text-[15px] md:text-base">
                 Chúng tôi tin bằng tất cả sự nổ lực, tâm huyết và tỉ mỉ vào từng
                 sản phẩm, những sản phẩm của KOIN sẽ là những chiếc áo thun 100%
                 Cotton chất lượng cao mà nhiều bạn trẻ muốn có trong tủ đồ của
@@ -26,51 +26,16 @@ const ProductPage = () => {
         <div className="py-5">
           <div className="p-5">
             <div className="grid grid-cols-12">
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
+              {Array(16)
+                .fill(1)
+                .map((prod, idx) => (
+                  <div
+                    key={idx}
+                    className="col-span-6 md:col-span-4 lg:col-span-3"
+                  >
+                    <ProductCard />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

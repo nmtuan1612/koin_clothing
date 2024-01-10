@@ -6,18 +6,19 @@ const Footer = () => {
     <div className="w-full">
       <div className="pt-5 pb-4 w-full bg-[#E8E8E8] flex justify-center">
         <div className="max-w-[1480px] grid grid-cols-12">
-          <div className="col-span-2 pl-1.5 pr-7 pt-[22px]">
+          <div className="col-span-12 md:col-span-2 pl-4 md:pl-1.5 pr-2 lg:pr-7 pt-[22px]">
             <Image
               src={
                 "https://koinclothing.vn/wp-content/uploads/2023/10/logo-c.png"
               }
+              alt=""
               width={0}
               height={0}
               sizes="100vw"
-              className="w-full h-auto object-cover"
+              className="w-1/2 md:w-full h-auto object-cover"
             />
           </div>
-          <div className="col-span-5 pr-[50px] pt-[22px]">
+          <div className="col-span-12 md:col-span-5 px-4 md:pr-[50px] pt-4 md:pl-0 md:pt-[22px]">
             <h3 className="font-bold text-xl leading-6 mb-2">
               THỜI TRANG UNISEX <br />
               ÁO THUN NAM NỮ FORM OVERSIZE
@@ -27,7 +28,7 @@ const Footer = () => {
               Chuyên Áo thun nam nữ Form Oversize trẻ trung và năng động.
             </p>
           </div>
-          <div className="col-span-5">
+          <div className="col-span-12 md:col-span-5 px-4 md:px-0">
             <div className="flex items-center mb-[14px] gap-2">
               <div className="py-1.5 px-4 border min-h-[47px] border-black flex-1 flex items-center">
                 <input
@@ -47,6 +48,7 @@ const Footer = () => {
                     src={
                       "https://koinclothing.vn/wp-content/plugins/gtranslate/flags/svg/vi.svg"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -108,7 +110,7 @@ const Footer = () => {
               <div className="p-2.5">
                 <h5 className="uppercase font-bold">KOIN CLOTHING</h5>
                 <div className="mt-4 border">
-                  <div className="pl-3 py-2.5 border-b flex gap-2 items-center text-sm">
+                  <div className="pl-3 py-2.5 border-b flex flex-wrap gap-2 items-center text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="16"
@@ -119,7 +121,7 @@ const Footer = () => {
                     </svg>
                     <b>Opentime:</b> 08h00 - 22h00
                   </div>
-                  <div className="pl-3 py-2.5 border-b flex gap-2 items-center text-sm">
+                  <div className="pl-3 py-2.5 border-b flex flex-wrap gap-2 items-center text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="16"
@@ -130,7 +132,7 @@ const Footer = () => {
                     </svg>
                     <b>Hotline, Zalo CSKH 1:</b> (+84) 0368 420 840
                   </div>
-                  <div className="pl-3 py-2.5 flex gap-2 items-center text-sm">
+                  <div className="pl-3 py-2.5 flex flex-wrap gap-2 items-center text-sm">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       height="16"
@@ -151,7 +153,7 @@ const Footer = () => {
               </div>
             </div>
             {/*  */}
-            <div className="col-span-7 md:col-span-1">
+            <div className="col-span-3 md:col-span-1">
               <div className="p-2.5">
                 <h5 className="uppercase font-bold mb-5">THÔNG TIN</h5>
                 <Link
@@ -164,13 +166,13 @@ const Footer = () => {
                   href={"/"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  Về chúng tôi
+                  Giới thiệu
                 </Link>
                 <Link
                   href={"/san-pham"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  Tất cả sản phẩm
+                  Sản phẩm
                 </Link>
                 <Link
                   href={"/khuyen-mai"}
@@ -182,13 +184,13 @@ const Footer = () => {
                   href={"/chon-size"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  Cách chọn size chuẩn
+                  Cách chọn size
                 </Link>
                 <Link
                   href={"/blog"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  Góc kiến thức
+                  Kiến thức
                 </Link>
                 <Link
                   href={"/lien-he"}
@@ -199,7 +201,7 @@ const Footer = () => {
               </div>
             </div>
             {/*  */}
-            <div className="col-span-7 md:col-span-1">
+            <div className="col-span-4 md:col-span-1">
               <div className="p-2.5">
                 <h5 className="uppercase font-bold mb-5">CÁC CHÍNH SÁCH</h5>
                 <Link
@@ -239,40 +241,40 @@ const Footer = () => {
               <div className="p-2.5">
                 <h5 className="uppercase font-bold mb-5">SẢN PHẨM NỔI BẬT</h5>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
                   1. Áo Thun Flexing Money
                 </Link>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  1. Áo Thun Flexing Money
+                  2. Áo Thun Flexing Money
                 </Link>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  1. Áo Thun Flexing Money
+                  3. Áo Thun Flexing Money
                 </Link>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  1. Áo Thun Flexing Money
+                  4. Áo Thun Flexing Money
                 </Link>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  1. Áo Thun Flexing Money
+                  5. Áo Thun Flexing Money
                 </Link>
                 <Link
-                  href={"/"}
+                  href={"/1"}
                   className="block py-1 leading-4 text-sm font-light"
                 >
-                  1. Áo Thun Flexing Money
+                  6. Áo Thun Flexing Money
                 </Link>
               </div>
             </div>
@@ -283,7 +285,7 @@ const Footer = () => {
                   THEO DÕI FANPAGE
                 </h5>
 
-                <div className="flex items-center gap-1.5">
+                <div className="flex flex-wrap items-center gap-1.5">
                   <Link
                     href={""}
                     className="inline-block rounded-full overflow-hidden h-10 w-10"
@@ -292,6 +294,7 @@ const Footer = () => {
                       src={
                         "https://koinclothing.vn/wp-content/uploads/2023/10/34d7f8da0414d2c6c7c0c2ed1c26a12d.png"
                       }
+                      alt=""
                       width={0}
                       height={0}
                       sizes="100vw"
@@ -310,6 +313,7 @@ const Footer = () => {
                       src={
                         "https://koinclothing.vn/wp-content/uploads/2023/10/44940989_10156852213527769_8794755487787646976_n.png"
                       }
+                      alt=""
                       width={0}
                       height={0}
                       sizes="100vw"
@@ -369,6 +373,7 @@ const Footer = () => {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/12/logoSaleNoti.png"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"

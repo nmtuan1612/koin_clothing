@@ -1,12 +1,13 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { styled } from "@mui/material/styles";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import MuiAccordionDetails from "@mui/material/AccordionDetails";
 import ProductCard from "@/components/ProductCard/ProductCard";
+import { AppContext } from "@/context/Store";
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
   padding: theme.spacing(2),
@@ -14,25 +15,68 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const ProductDetailPage = () => {
+  const { addToCart } = useContext(AppContext);
+  const { favorite, addToFavorite, deleteFromFavorite } =
+    useContext(AppContext);
+
   const [expanded, setExpanded] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState({
+    color: "",
+    size: "",
+    quantity: "1",
+    price: 159000,
+    name: "Áo Thun KOIN Dollarium Nam Nữ Form Rộng",
+    imgUrl:
+      "https://koinclothing.vn/wp-content/uploads/2023/11/ao-thun-unisex-form-rong-4-600x600.webp",
+  });
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  const handleSelectColor = (color) => {
+    setSelectedProduct((prev) => ({ ...prev, color }));
+  };
+
+  const handleSelectSize = (size) => {
+    setSelectedProduct((prev) => ({ ...prev, size }));
+  };
+
   return (
     <div className="w-full flex justify-center">
       <div className="max-w-[1480px]">
         {/* product */}
         <div className="grid md:grid-cols-2">
           {/* left */}
-          <div className="relative px-4">
+          <div className="relative px-4 group">
             <div className="w-10 h-10 bg-black z-20 text-sm absolute left-[15px] flex justify-center items-center top-[30px] text-white pointer-events-none">
               -11%
+            </div>
+            <div
+              onClick={() =>
+                addToFavorite({
+                  price: 159000,
+                  name: "Áo Thun KOIN Dollarium Nam Nữ Form Rộng",
+                  imgUrl:
+                    "https://koinclothing.vn/wp-content/uploads/2023/11/ao-thun-unisex-form-rong-4-600x600.webp",
+                })
+              }
+              className={`absolute hidden group-hover:block top-3 right-7 border-2 rounded-full p-1.5 text-gray-300 hover:bg-red-500 hover:text-white cursor-pointer`}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6"
+              >
+                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+              </svg>
             </div>
             <Image
               src={
                 "https://koinclothing.vn/wp-content/uploads/2023/11/ao-thun-unisex-form-rong-4-600x600.webp"
               }
+              alt=""
               width={0}
               height={0}
               sizes="100vw"
@@ -65,7 +109,7 @@ const ProductDetailPage = () => {
 
             {/* des */}
             <p className="mb-3">
-              <span className="text-sm text-[#0a0a0a]">
+              <span className="text-sm text-[#0a0a0a] text-[15px] md:text-base">
                 Áo Thun Dollarium Nam Nữ KOIN mang đến nhiều mẫu thiết kế áo
                 thun Nam Nữ form Oversize từ cơ bản đến cá tính sở hữu kiểu dáng
                 đa dạng, mang đến cho bạn sự thoải mái, mát mẻ vượt trội. Ăn mặc
@@ -83,7 +127,16 @@ const ProductDetailPage = () => {
                 <span className="text-sm text-[#666666] font-bold">
                   Màu sắc
                 </span>
-                <span className="uppercase text-[#666666] text-xs font-light">
+                <span
+                  className="uppercase text-[#666666] text-xs font-light cursor-pointer"
+                  onClick={() => {
+                    setSelectedProduct({
+                      color: "",
+                      size: "",
+                      quantity: "1",
+                    });
+                  }}
+                >
                   clear selection
                 </span>
               </div>
@@ -91,54 +144,98 @@ const ProductDetailPage = () => {
                 <div className="pr-2 pb-1">
                   <label
                     htmlFor=""
-                    className="my-1 w-8 h-8 bg-white inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white"
+                    onClick={() => handleSelectColor("white")}
+                    className={`my-1 w-8 h-8 cursor-pointer bg-white inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white ${
+                      selectedProduct.color === "white"
+                        ? "outline-[3px] outline-black"
+                        : ""
+                    }`}
                   ></label>
                 </div>
                 <div className="pr-2 pb-1">
                   <label
                     htmlFor=""
-                    className="my-1 w-8 h-8 bg-black inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white"
+                    onClick={() => handleSelectColor("black")}
+                    className={`my-1 w-8 h-8 cursor-pointer bg-black inline-block outline-double border-2 border-white ${
+                      selectedProduct.color === "black"
+                        ? "outline-[3px] outline-black"
+                        : "outline-1 outline-[#9c9999]"
+                    }`}
                   ></label>
                 </div>
                 <div className="pr-2 pb-1">
                   <label
                     htmlFor=""
-                    className="my-1 w-8 h-8 bg-green-800 inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white"
+                    onClick={() => handleSelectColor("green")}
+                    className={`my-1 w-8 h-8 cursor-pointer bg-green-800 inline-block outline-double border-2 border-white ${
+                      selectedProduct.color === "green"
+                        ? "outline-[3px] outline-black"
+                        : "outline-1 outline-[#9c9999]"
+                    }`}
                   ></label>
                 </div>
                 <div className="pr-2 pb-1">
                   <label
                     htmlFor=""
-                    className="my-1 w-8 h-8 bg-blue-900 inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white"
+                    onClick={() => handleSelectColor("blue")}
+                    className={`my-1 w-8 h-8 cursor-pointer bg-blue-900 inline-block outline-double border-2 border-white ${
+                      selectedProduct.color === "blue"
+                        ? "outline-[3px] outline-black"
+                        : "outline-1 outline-[#9c9999]"
+                    }`}
                   ></label>
                 </div>
                 <div className="pr-2 pb-1">
                   <label
                     htmlFor=""
-                    className="my-1 w-8 h-8 bg-[#512b00] inline-block outline-1 outline-double outline-[#9c9999] border-2 border-white"
+                    onClick={() => handleSelectColor("brown")}
+                    className={`my-1 w-8 h-8 cursor-pointer bg-[#512b00] inline-block outline-double border-2 border-white ${
+                      selectedProduct.color === "brown"
+                        ? "outline-[3px] outline-black"
+                        : "outline-1 outline-[#9c9999]"
+                    }`}
                   ></label>
                 </div>
               </div>
 
               {/* size */}
               <div className="py-1">
-                <span className="text-sm text-[#666666] font-bold">
-                  Màu sắc
-                </span>
+                <span className="text-sm text-[#666666] font-bold">Size</span>
               </div>
               <div className="flex items-center">
                 <div className="pr-2 pb-1">
-                  <label className="my-1 leading-10 min-w-[32px] text-center inline-block border border-[#9c9999]">
+                  <label
+                    onClick={() => handleSelectSize("M")}
+                    className={`my-1 leading-10 cursor-pointer min-w-[40px] text-center inline-block border ${
+                      selectedProduct.size === "M"
+                        ? "border-black border-2"
+                        : "border-[#9c9999]"
+                    }`}
+                  >
                     M
                   </label>
                 </div>
                 <div className="pr-2 pb-1">
-                  <label className="my-1 leading-10 min-w-[32px] text-center inline-block border border-[#9c9999]">
+                  <label
+                    onClick={() => handleSelectSize("L")}
+                    className={`my-1 leading-10 cursor-pointer min-w-[40px] text-center inline-block border ${
+                      selectedProduct.size === "L"
+                        ? "border-black border-2"
+                        : "border-[#9c9999]"
+                    }`}
+                  >
                     L
                   </label>
                 </div>
                 <div className="pr-2 pb-1">
-                  <label className="my-1 leading-10 min-w-[32px] text-center inline-block border border-[#9c9999]">
+                  <label
+                    onClick={() => handleSelectSize("XL")}
+                    className={`my-1 leading-10 cursor-pointer min-w-[40px] text-center inline-block border ${
+                      selectedProduct.size === "XL"
+                        ? "border-black border-2"
+                        : "border-[#9c9999]"
+                    }`}
+                  >
                     XL
                   </label>
                 </div>
@@ -147,11 +244,44 @@ const ProductDetailPage = () => {
 
             {/* Buttons */}
             <div className="py-2">
+              {/* Quantity */}
+              <div className="">
+                <div className="inline-flex items-center mr-4 mb-4 h-10">
+                  <button className="px-2 h-full border bg-gray-100 hover:bg-gray-300 cursor-pointer">
+                    -
+                  </button>
+                  {/* <div className="flex items-center h-full w-8 overflow-hidden justify-center"> */}
+                  <input
+                    type="text"
+                    value={selectedProduct.quantity}
+                    onChange={(e) =>
+                      setSelectedProduct((prev) => ({
+                        ...prev,
+                        quantity: e.target.value,
+                      }))
+                    }
+                    className="h-full w-8 text-center border outline-none"
+                  />
+                  {/* </div> */}
+                  <button className="px-2 h-full border bg-gray-100 hover:bg-gray-300 cursor-pointer">
+                    +
+                  </button>
+                </div>
+
+                <button
+                  disabled={!selectedProduct.color || !selectedProduct.size}
+                  onClick={() => addToCart(selectedProduct)}
+                  className="mb-4 px-5 bg-black text-white min-h-[40px] uppercase disabled:opacity-50"
+                >
+                  Thêm vào giỏ hàng
+                </button>
+              </div>
               <Link href={""} className=" block mb-1.5">
                 <Image
                   src={
                     "https://koinclothing.vn/wp-content/uploads/2023/12/buttonshopee.jpg"
                   }
+                  alt=""
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -163,6 +293,7 @@ const ProductDetailPage = () => {
                   src={
                     "https://koinclothing.vn/wp-content/uploads/2023/12/buttontiktok.jpg"
                   }
+                  alt=""
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -174,6 +305,7 @@ const ProductDetailPage = () => {
                   src={
                     "https://koinclothing.vn/wp-content/uploads/2023/12/buttontiki.jpg"
                   }
+                  alt=""
                   width={0}
                   height={0}
                   sizes="100vw"
@@ -517,7 +649,7 @@ const ProductDetailPage = () => {
                 <h5 className="uppercase font-bold mb-1 mt-[30px]">Mô tả</h5>
               </div>
               <div className="col-span-12 border-t-0 md:col-span-10 px-4 py-6">
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   Phong cách năng động và trẻ trung với Áo Thun KOIN Hình Chó
                   Doberman Form Oversize được in họa tiết các chú chó Doberman
                   độc đáo trước ngực giúp thiết kế không hề đơn điệu mà tạo điểm
@@ -525,7 +657,7 @@ const ProductDetailPage = () => {
                   áo bo thun kết hợp cùng hình ảnh được in cao cấp nổi bật trước
                   tạo điểm nhấn độc đáo cho chiếc áo đen basic.
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   <Link href={""}>Áo thun in hình</Link> là một trong những kiểu
                   áo cơ bản và dễ sử dụng như đi hẹn hò, gặp gỡ bạn bè nhưng vẫn
                   rất năng động và nổi bật. Chất liệu cotton là một trong những
@@ -534,23 +666,23 @@ const ProductDetailPage = () => {
                   cũng cần phải có trong tủ đồ, nhờ sự tiện lợi và phù hợp trong
                   nhiều hoàn cảnh khác nhau như đi hẹn hò, gặp gỡ bạn bè,…
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   <strong>CHI TIẾT SẢN PHẨM:</strong>
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   – Chất liệu: 100% Cotton 2 chiều. <br />
                   – Định lượng: 250Gsm. <br />– Hình in trên áo áp dụng công
                   nghệ in PET chuyển nhiệt. <br />– Form áo Oversize phù hợp với
                   nhiều kiểu hình thể.
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   ✔ Cam kết sản phẩm chất lượng y hình 100%. <br />✔ Hỗ trợ
                   đổi/trả miễn phí nếu khách hàng không hài lòng về sản phẩm.
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   <strong>ĐIỀU KIỆN ĐỔI TRẢ SẢN PHẨM:</strong>
                 </p>
-                <p className="mb-5">
+                <p className="mb-5 text-[15px] md:text-base">
                   1. Quay lại video Unbox sản phẩm. <br />
                   2. Nếu sản phẩm có vấn đề thì liên hệ ngay với KOIN để được hỗ
                   trợ đổi trả.
@@ -563,19 +695,18 @@ const ProductDetailPage = () => {
           <h3 className="font-bold uppercase mb-3 text-2xl">
             SẢN PHẨM TƯƠNG TỰ
           </h3>
+
           <div className="grid grid-cols-12">
-            <div className="col-span-3">
-              <ProductCard />
-            </div>
-            <div className="col-span-3">
-              <ProductCard />
-            </div>
-            <div className="col-span-3">
-              <ProductCard />
-            </div>
-            <div className="col-span-3">
-              <ProductCard />
-            </div>
+            {Array(4)
+              .fill(1)
+              .map((prod, idx) => (
+                <div
+                  key={idx}
+                  className="col-span-6 md:col-span-4 lg:col-span-3"
+                >
+                  <ProductCard />
+                </div>
+              ))}
           </div>
         </div>
       </div>

@@ -9,51 +9,16 @@ const SaleProductPage = () => {
         <div className="py-5">
           <div className="p-5">
             <div className="grid grid-cols-12">
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
-              <div className="col-span-3">
-                <ProductCard />
-              </div>
+              {Array(16)
+                .fill(0)
+                .map((prod, idx) => (
+                  <div
+                    key={idx}
+                    className="col-span-6 md:col-span-4 lg:col-span-3"
+                  >
+                    <ProductCard />
+                  </div>
+                ))}
             </div>
           </div>
         </div>

@@ -1,7 +1,16 @@
+"use client";
 import BlogCard from "@/components/BlogCard/BlogCard";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import Image from "next/image";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  Thumbs,
+  Pagination,
+  Parallax,
+  Autoplay,
+  Navigation,
+} from "swiper/modules";
 
 export default function Home() {
   return (
@@ -10,7 +19,7 @@ export default function Home() {
       <div className="max-w-[1480px]">
         <div className="flex flex-col-reverse md:flex-row md: items-center">
           <div className="flex-1 p-2.5 flex flex-col items-center gap-5">
-            <h2 className="text-6xl text-black uppercase font-bold pb-4">
+            <h2 className="text-3xl md:text-6xl text-center text-black uppercase font-bold pb-4">
               ÁO THUN <br />
               LOCAL BRAND FORM <br />
               OVERSIZE
@@ -21,6 +30,7 @@ export default function Home() {
               }
               width={180}
               height={46}
+              alt=''
             />
             <p className="text-center">
               Chào mừng bạn đến với Thương hiệu Koin Clothing! <br />
@@ -45,14 +55,58 @@ export default function Home() {
               }
               width={936}
               height={1248}
+              alt=''
             />
           </div>
         </div>
       </div>
 
       {/* product list */}
-      <div className="max-w-[1480px] p-2.5">
-        <div className="grid grid-cols-12">
+      <div className="max-w-[1480px] w-full p-2.5">
+        <Swiper
+          // install Swiper modules
+          style={{
+            "--swiper-navigation-color": "#000",
+            "--swiper-pagination-color": "#000",
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 2,
+            },
+            400: {
+              slidesPerView: 2,
+            },
+            639: {
+              slidesPerView: 3,
+            },
+            865: {
+              slidesPerView: 4,
+            },
+          }}
+          speed={2000}
+          autoplay={{
+            delay: 500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          loop={true}
+          modules={[Autoplay, Navigation, Pagination]}
+          className="w-full h-auto"
+        >
+          {Array(10)
+            .fill(1)
+            .map((img, index) => (
+              <SwiperSlide key={index}>
+                <div className="inline-flex w-full h-full items-center justify-center">
+                  <ProductCard />
+                  {/* <BlogCard /> */}
+                </div>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+        {/* <div className="grid grid-cols-12">
           <div className="col-span-3">
             <ProductCard />
           </div>
@@ -65,7 +119,7 @@ export default function Home() {
           <div className="col-span-3">
             <ProductCard />
           </div>
-        </div>
+        </div> */}
 
         <div className="flex justify-center pb-[50px]">
           <Link
@@ -99,6 +153,7 @@ export default function Home() {
               src={
                 "https://koinclothing.vn/wp-content/uploads/2023/03/bg40.webp"
               }
+              alt=""
               width={0}
               height={0}
               sizes="100vw"
@@ -109,6 +164,7 @@ export default function Home() {
               src={
                 "https://koinclothing.vn/wp-content/uploads/2023/11/koin-fashion-2023-unisex.webp"
               }
+              alt=""
               width={0}
               height={0}
               sizes="100vw"
@@ -142,6 +198,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/03/icon-3.png"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -164,6 +221,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/03/icon-2.png"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -186,6 +244,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/03/icon-1.png"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -248,6 +307,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/10/feedback-khach-hang-koin-1.webp"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -259,6 +319,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/10/feedback-khach-hang-koin-1.webp"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
@@ -270,6 +331,7 @@ export default function Home() {
                     src={
                       "https://koinclothing.vn/wp-content/uploads/2023/10/feedback-khach-hang-koin-1.webp"
                     }
+                    alt=""
                     width={0}
                     height={0}
                     sizes="100vw"
