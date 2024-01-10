@@ -1,7 +1,7 @@
 {
-  "/san-pham/page": "app/san-pham/page.js",
-  "/danh-sach-yeu-thich/page": "app/danh-sach-yeu-thich/page.js",
   "/[productId]/page": "app/[productId]/page.js",
   "/page": "app/page.js",
-  "/thanh-toan/page": "app/thanh-toan/page.js"
+  "/thanh-toan/page": "app/thanh-toan/page.js",
+  "/blog/[blogId]/page": "app/blog/[blogId]/page.js",
+  "/blog/page": "app/blog/page.js"
 }

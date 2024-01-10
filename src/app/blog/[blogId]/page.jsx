@@ -29,6 +29,7 @@ const ViewBlogPage = () => {
                     width={0}
                     height={0}
                     sizes="100vw"
+                    alt=""
                     style={{
                       width: "100%",
                       height: "auto",

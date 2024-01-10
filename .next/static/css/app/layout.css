@@ -1667,6 +1667,10 @@ body {
     grid-column: span 9 / span 9;
   }
 
+  .md\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
   .md\:table-cell {
     display: table-cell;
   }

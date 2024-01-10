@@ -15,27 +15,13 @@ const BlogPage = () => {
               </div>
             </div>
             <div className="grid grid-cols-12">
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
-              <div className="col-span-3">
-                <BlogCard />
-              </div>
+              {Array(7)
+                .fill(1)
+                .map((blog, idx) => (
+                  <div className="col-span-12 md:col-span-6 lg:col-span-3">
+                    <BlogCard />
+                  </div>
+                ))}
             </div>
           </div>
         </div>
